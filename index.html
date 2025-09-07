@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Modern one‑page developer portfolio" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ------------------
+       Minimal, modern UI
+       ------------------ */
+    :root{
+      --bg: #0b0d12;
+      --panel: #10131a;
+      --muted: #8e98a8;
+      --text: #e6eaf2;
+      --brand: #7c5cff;
+      --brand-2: #22d3ee;
+      --accent: #10b981;
+      --ring: rgba(124,92,255,.45);
+      --card: #0e1117;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    :root.light{
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --muted: #5b667a;
+      --text: #0d1321;
+      --brand: #6d28d9;
+      --brand-2: #0891b2;
+      --accent: #059669;
+      --ring: rgba(109,40,217,.25);
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(20, 30, 50, .08);
+    }
+    *{ box-sizing: border-box }
+    html,body{ height: 100% }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 80% -10%, rgba(124,92,255,.12), transparent 50%),
+                  radial-gradient(1000px 600px at -10% 10%, rgba(34,211,238,.10), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      letter-spacing: .2px;
+      scroll-behavior: smooth;
+    }
+    a{ color: inherit; text-decoration: none }
+    .container{ width: min(1100px, 92%); margin: 0 auto }
+    /* Header */
+    header{
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(130%) blur(10px);
+      background: color-mix(in oklab, var(--bg) 82%, transparent);
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 20%, transparent);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding: 14px 0 }
+    .brand{ display:flex; gap: 12px; align-items:center }
+    .logo{ width:36px; height:36px; border-radius:12px; background: conic-gradient(from 220deg, var(--brand), var(--brand-2)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12) }
+    .name{ font-weight: 700; letter-spacing:.3px }
+    .navlinks{ display:flex; gap: 18px; align-items:center }
+    .navlinks a{ opacity:.9; padding:8px 12px; border-radius: 10px }
+    .navlinks a:hover{ background: color-mix(in oklab, var(--panel) 88%, transparent) }
+    .btn{ display:inline-flex; align-items:center; gap:10px; border: 1px solid transparent; background: var(--brand); color:white; padding: 10px 14px; border-radius: 12px; font-weight:600; box-shadow: var(--shadow) }
+    .btn.ghost{ background: transparent; color: var(--text); border-color: color-mix(in oklab, var(--brand) 35%, transparent)}
+    .btn:focus-visible{ outline: 3px solid var(--ring) }
+
+    /* Hero */
+    .hero{ padding: clamp(40px, 7vw, 100px) 0 40px; position: relative }
+    .hero .wrap{ display:grid; grid-template-columns: 1.3fr .7fr; gap: clamp(24px, 5vw, 48px); align-items:center }
+    .badge{ display:inline-flex; align-items:center; gap:10px; padding: 8px 12px; border-radius: 999px; background: color-mix(in oklab, var(--panel) 88%, transparent); border: 1px solid color-mix(in oklab, var(--brand) 22%, transparent); font-size:.9rem; color: var(--muted) }
+    .spark{ width:10px; height:10px; border-radius:999px; background: radial-gradient(circle at 30% 30%, white, var(--brand)); box-shadow: 0 0 18px var(--brand) }
+    h1{ font-size: clamp(28px, 5.6vw, 54px); line-height: 1.05; margin: 12px 0 14px }
+    .lead{ font-size: clamp(15px, 1.7vw, 18px); color: var(--muted); max-width: 48ch }
+    .cta{ display:flex; gap:12px; margin-top: 22px; flex-wrap: wrap }
+    .statgrid{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:16px; margin-top: 26px }
+    .stat{ padding:16px; border-radius: 16px; background: color-mix(in oklab, var(--panel) 88%, transparent); border: 1px solid color-mix(in oklab, var(--brand) 18%, transparent) }
+    .stat b{ font-size: 20px }
+
+    .portrait{
+      aspect-ratio: 4/5; border-radius: 20px; background:
+        radial-gradient(120px 120px at 75% 25%, rgba(124,92,255,.4), transparent 60%),
+        linear-gradient(160deg, color-mix(in oklab, var(--panel) 90%, transparent), transparent 40%),
+        linear-gradient(10deg, color-mix(in oklab, var(--brand-2) 35%, transparent), transparent 55%),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%237c5cff"/><stop offset="1" stop-color="%2322d3ee"/></linearGradient></defs><g fill="none" stroke="url(%23g)" opacity=".25"><circle cx="100" cy="125" r="70"/><circle cx="100" cy="125" r="90"/><circle cx="100" cy="125" r="110"/></g></svg>');
+      background-size: cover; box-shadow: var(--shadow);
+      position: relative; overflow: hidden; isolation:isolate; border: 1px solid color-mix(in oklab, var(--brand) 15%, transparent)
+    }
+    .portrait::after{ content:""; position:absolute; inset:0; background: radial-gradient(400px 120px at 60% 0%, rgba(255,255,255,.14), transparent 60%) }
+
+    /* Sections */
+    section{ padding: 70px 0 }
+    .section-title{ font-size: clamp(20px, 3.5vw, 30px); margin: 0 0 22px }
+    .muted{ color: var(--muted) }
+
+    /* Skills */
+    .chips{ display:flex; gap:10px; flex-wrap: wrap }
+    .chip{ padding: 8px 12px; border-radius: 999px; background: color-mix(in oklab, var(--panel) 88%, transparent); border: 1px dashed color-mix(in oklab, var(--brand) 25%, transparent); font-weight: 600; font-size: .95rem }
+
+    /* Projects */
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 18px }
+    .card{ grid-column: span 12; padding: 18px; border-radius: var(--radius); background: var(--card); border:1px solid color-mix(in oklab, var(--brand) 15%, transparent); box-shadow: var(--shadow); display:flex; gap:16px; flex-direction:column }
+    .thumb{ border-radius: 14px; aspect-ratio: 16/9; background:
+      radial-gradient(120px 120px at 0% 0%, rgba(124,92,255,.35), transparent 60%),
+      radial-gradient(100px 100px at 100% 40%, rgba(34,211,238,.35), transparent 60%),
+      linear-gradient(180deg, color-mix(in oklab, var(--panel) 90%, transparent), transparent 40%);
+      border: 1px solid color-mix(in oklab, var(--brand) 18%, transparent);
+    }
+    .card h3{ margin: 0 }
+    .card .meta{ display:flex; gap: 8px; flex-wrap:wrap }
+    .tag{ font-size:.85rem; padding:6px 10px; border-radius:999px; background: color-mix(in oklab, var(--panel) 88%, transparent); border: 1px solid color-mix(in oklab, var(--brand) 18%, transparent) }
+    .card .actions{ margin-top:auto; display:flex; gap:10px; flex-wrap: wrap }
+
+    @media (min-width: 720px){
+      .card{ grid-column: span 6 }
+    }
+
+    /* Contact */
+    .contact{ display:grid; grid-template-columns: 1fr; gap: 20px }
+    .contact .panel{ background: var(--panel); padding: 18px; border-radius: var(--radius); border:1px solid color-mix(in oklab, var(--brand) 15%, transparent) }
+    .row{ display:flex; gap: 12px; align-items:center; justify-content:space-between; flex-wrap:wrap }
+    input, textarea{
+      width: 100%; background: color-mix(in oklab, var(--panel) 80%, transparent);
+      border: 1px solid color-mix(in oklab, var(--brand) 18%, transparent);
+      border-radius: 14px; padding: 12px 14px; color: var(--text); font: inherit
+    }
+
+    /* Footer */
+    footer{ padding: 40px 0 60px; color: var(--muted); text-align:center }
+
+    /* Utilities */
+    .hide-sm{ display:none }
+    @media (min-width: 860px){ .hide-sm{ display:inline-flex } }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">Your Name</div>
+          <div class="muted" style="font-size:.9rem">Full‑Stack Developer</div>
+        </div>
+      </div>
+      <nav class="navlinks">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills" class="hide-sm">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="btn ghost" id="modeToggle" aria-label="Toggle theme">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="badge"><span class="spark" aria-hidden="true"></span> Available for internship</span>
+        <h1>Building clean, fast experiences for web & mobile.</h1>
+        <p class="lead">I’m a developer who loves crafting delightful UIs and robust backends. I care about performance, accessibility, and DX.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="mailto:your.email@example.com">Email Me</a>
+        </div>
+        <div class="statgrid">
+          <div class="stat"><b>12+</b><br><span class="muted">Projects</span></div>
+          <div class="stat"><b>4</b><br><span class="muted">Open‑source repos</span></div>
+          <div class="stat"><b>2</b><br><span class="muted">Years coding</span></div>
+        </div>
+      </div>
+      <div class="portrait" role="img" aria-label="Abstract portrait placeholder"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <p class="muted">I’m a software developer based in Morocco, focused on React, Node.js, and modern tooling. I value simple solutions, great UX, and teamwork. Outside code, I enjoy teaching and building community projects.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="chips">
+        <span class="chip">JavaScript / TypeScript</span>
+        <span class="chip">React / Next.js</span>
+        <span class="chip">Node.js / Express</span>
+        <span class="chip">Python</span>
+        <span class="chip">Docker</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">Git / GitHub</span>
+        <span class="chip">CI/CD</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid">
+        <!-- Project card 1 -->
+        <article class="card" aria-labelledby="p1-title">
+          <div class="thumb" aria-hidden="true"></div>
+          <div>
+            <h3 id="p1-title">Melloge — Short‑video Social App</h3>
+            <p class="muted">Microservices‑based app inspired by TikTok/Azar. Real‑time messaging, moderation tools, and smooth video feed.</p>
+            <div class="meta">
+              <span class="tag">React Native</span>
+              <span class="tag">NestJS</span>
+              <span class="tag">WebSockets</span>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+        <!-- Project card 2 -->
+        <article class="card" aria-labelledby="p2-title">
+          <div class="thumb" aria-hidden="true"></div>
+          <div>
+            <h3 id="p2-title">SchoolOS — 42‑style Student Platform</h3>
+            <p class="muted">Manage students, points, wallets, and reports. Admin dashboards and PDF exports for metrics.</p>
+            <div class="meta">
+              <span class="tag">Next.js</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Docker</span>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Case Study</a>
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+        <!-- Project card 3 -->
+        <article class="card" aria-labelledby="p3-title">
+          <div class="thumb" aria-hidden="true"></div>
+          <div>
+            <h3 id="p3-title">Cephalopods Simulator</h3>
+            <p class="muted">Multithreaded game state simulator with performance optimization and visualization.</p>
+            <div class="meta">
+              <span class="tag">C / C++</span>
+              <span class="tag">Threads</span>
+              <span class="tag">SDL</span>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact">
+        <div class="panel">
+          <div class="row">
+            <div>
+              <div style="font-weight:700">Let’s work together</div>
+              <div class="muted">I’m open to internships, freelance, and collabs.</div>
+            </div>
+            <div>
+              <a class="btn" href="mailto:your.email@example.com">Email</a>
+              <button class="btn ghost" id="copyEmail">Copy Email</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email" required />
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+            <div style="display:flex; gap:12px; justify-content:flex-end; margin-top: 10px">
+              <button class="btn" type="submit">Send</button>
+              <button class="btn ghost" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> Your Name. Built with ❤ — fast, accessible, and responsive.</div>
+    </div>
+  </footer>
+
+  <script>
+    // -------- Theme (dark/light) --------
+    (function(){
+      const root = document.documentElement;
+      const key = 'pref-theme';
+      const saved = localStorage.getItem(key);
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      if(saved){
+        root.classList.toggle('light', saved === 'light');
+      }else{
+        root.classList.toggle('light', prefersLight);
+      }
+      document.getElementById('modeToggle').addEventListener('click', ()=>{
+        root.classList.toggle('light');
+        const val = root.classList.contains('light') ? 'light' : 'dark';
+        localStorage.setItem(key, val);
+        document.getElementById('modeToggle').textContent = val === 'light' ? '🌞' : '🌙';
+      });
+      // Set initial icon
+      document.getElementById('modeToggle').textContent = root.classList.contains('light') ? '🌞' : '🌙';
+    })();
+
+    // -------- Copy email --------
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      const email = 'your.email@example.com';
+      try{
+        await navigator.clipboard.writeText(email);
+        const btn = document.getElementById('copyEmail');
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = old, 1400);
+      }catch(err){ alert('Copy failed. Email: '+ email); }
+    });
+
+    // -------- Year --------
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    ✅ How to customize (quick):
+    1) Replace "Your Name", title, and email.
+    2) Update About text and Skills chips.
+    3) Replace project titles/descriptions/links.
+    4) Optional: swap the abstract portrait with your photo by setting .portrait background to url('your.jpg').
+  -->
+</body>
+</html>
