@@ -1,5 +1,11 @@
-on: push
+name: Test Workflow
+
+on: 
+  push:
+
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    run: echo "slm a bro "
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "slm a bro"
